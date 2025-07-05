@@ -21,11 +21,10 @@ class CreateGroup extends Component
 
     public function mount()
     {
-        // Hanya dosen yang bisa mengakses halaman ini
-        if (! Auth::user()->isLecturer()) {
+        if (! User::user()->isLecturer()) {
             abort(403, 'Unauthorized action.');
         }
-        $this->users = User::where('id', '!=', Auth::id())->get(); // Ambil semua pengguna kecuali diri sendiri
+        $this->users = User::where('id', '!=', Auth::id())->get(); 
     }
 
 
