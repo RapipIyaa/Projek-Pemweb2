@@ -6,19 +6,11 @@ use Livewire\Volt\Volt;
 use App\Livewire\Chat;
 
 Route::get('/', function () {
-    // Arahkan ke login jika belum terotentikasi
     if (!auth()->check()) {
         return redirect()->route('login');
     }
-    // Arahkan ke chat jika sudah terotentikasi
     return redirect()->route('chat');
 })->name('home');
-
-// Pastikan rute dashboard sudah dihapus atau dikomentari
-// Route::view('dashboard', 'dashboard')
-//     ->middleware(['auth', 'verified'])
-//     ->name('dashboard');
-
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 

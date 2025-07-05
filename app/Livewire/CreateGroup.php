@@ -32,7 +32,7 @@ class CreateGroup extends Component
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'selectedMembers' => ['array'],
-            'selectedMembers.*' => ['exists:users,id'], // Validasi ID anggota yang dipilih
+            'selectedMembers.*' => ['exists:users,id'], 
         ]);
 
         $group = Group::create([
@@ -41,7 +41,7 @@ class CreateGroup extends Component
             'lecturer_id' => Auth::id(),
         ]);
 
-        // Tambahkan dosen sebagai anggota pertama secara otomatis
+
         $group->members()->attach(Auth::id());
 
         // Tambahkan anggota yang dipilih
