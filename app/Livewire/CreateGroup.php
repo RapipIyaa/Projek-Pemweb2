@@ -6,19 +6,17 @@ use App\Models\User;
 use Livewire\Component;
 use App\Models\Group;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Layout; // Import ini jika Anda ingin layout khusus
+use Livewire\Attributes\Layout;
 
-// #[Layout('components.layouts.app')] // Contoh layout untuk halaman ini
 class CreateGroup extends Component
 {
     public string $name = '';
     public ?string $description = '';
 
     public $search = '';
-    public array $selectedMembers = []; // Untuk memilih anggota
+    public array $selectedMembers = []; 
 
-    public $users; // Daftar pengguna yang bisa ditambahkan ke grup
-
+    public $users; 
     public function mount()
     {
         if (! User::user()->isLecturer()) {

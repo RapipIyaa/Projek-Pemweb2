@@ -57,7 +57,6 @@
         </div>
     </aside>
 
-    {{-- Kolom 2: Jendela Chat Utama --}}
     @if ($selectedChat)
         <main class="flex-1 flex flex-col">
             {{-- Header Chat --}}
@@ -76,8 +75,6 @@
                     </p>
                 </div>
             </header>
-
-            {{-- Area Pesan --}}
             <div class="flex-1 p-4 space-y-4 overflow-y-auto bg-slate-50 dark:bg-zinc-800" x-data="{
                 scrollMessages: () => {
                     const messagesContainer = document.querySelector('.flex-1.p-4');
@@ -96,7 +93,6 @@
                             </div>
                         </div>
                     @else
-                    {{-- Pesan masuk --}}
                         <div class="flex items-end gap-2 justify-start">
                             <img src="https://i.pravatar.cc/150?u={{ $message->sender->email }}" alt="{{ $message->sender->name }}" class="w-8 h-8 rounded-full">
                             <div class="bg-gray-200 dark:bg-zinc-700 dark:text-white p-3 rounded-lg rounded-bl-none max-w-sm">

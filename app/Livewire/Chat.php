@@ -26,8 +26,7 @@ class Chat extends Component
     {
         $this->authId = Auth::id();
         $this->loginID = Auth::id();
-
-        // Ambil semua pengguna kecuali pengguna yang sedang login
+        
         $this->users = User::whereNot("id", $this->authId)->latest()->get();
         // Ambil grup di mana pengguna adalah anggota
         $this->groups = Auth::user()->groups()->get();
@@ -36,10 +35,8 @@ class Chat extends Component
         $this->selectedChat = $this->users->first() ?? $this->groups->first();
 
         $this->loadMessages();
-        $this->updateListeners(); // Panggil ini untuk menginisialisasi listener
+        $this->updateListeners(); 
     }
-
-    // Metode untuk memperbarui listener setelah mount atau perubahan penting
     protected function updateListeners()
     {
         $this->listeners = [

@@ -70,9 +70,6 @@ class User extends Authenticatable
         return $this->role === 'student';
     }
 
-    /**
-     * Hubungan many-to-many dengan Group.
-     */
     public function groups(): BelongsToMany
     {
         return $this->belongsToMany(Group::class, 'group_members');
